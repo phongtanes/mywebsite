@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurolian Restaurant Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.teahub.io/photos/full/41-419298_background-image-for-restaurant-website.jpg') no-repeat center center/cover;
+            color: #333;
+        }
+
+        .menu-container {
+            position: relative;
+            top: 50px;
+            background: rgba(0, 0, 0, 0.7); /* ยังคงพื้นหลังแบบโปร่งใส */
+            border-radius: 8px;
+            color: #eee;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .menu-category {
+            margin: 2rem 0;
+        }
+
+        .menu-category h2 {
+            font-size: 1.8rem;
+            color: #eee;
+            border-bottom: 2px solid #ffc107;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item h3 {
+            color: #eee;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .menu-item p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+            color: #cecece;
+        }
+
+        .menu-item span {
+            font-size: 1rem;
+            color: #a3a3a3;
+            font-weight: bold;
+        }
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            color: #5d5d63;
+            
+            transition: 200ms ;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="#about">About Us</a>
+        <a href="Menu.html">Menu</a>
+        <a href="#reservation">Reservation</a>
+    </nav>
+    <div class="menu-container">
+        <h1>Aurolian Menu</h1>
+        
+        <div class="menu-category">
+            <h2>Appetizers</h2>
+            <div class="menu-item">
+                <div>
+                    <h3>Caesar Salad</h3>
+                    <p>Crispy romaine lettuce, parmesan, croutons</p>
+                </div>
+                <span>$8.99</span>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Tomato Soup</h3>
+                    <p>Fresh tomatoes, basil, and cream</p>
+                </div>
+                <span>$6.99</span>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Main Dishes</h2>
+            <div class="menu-item">
+                <div>
+                    <h3>Grilled Salmon</h3>
+                    <p>Served with asparagus and lemon butter sauce</p>
+                </div>
+                <span>$15.99</span>
+            </div>
+        </div>

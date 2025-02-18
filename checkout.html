@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Aurolian Restaurant</title>
+    <link rel="stylesheet" href="check.css"> <!-- ปรับเป็นชื่อไฟล์ CSS ที่ถูกต้อง -->
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+    </header>
+
+    <section id="checkout-details">
+        <h2>Your Order</h2>
+        <ul id="checkout-items">
+            <!-- รายการจะถูกเพิ่มที่นี่โดย JavaScript -->
+        </ul>
+        <p>Total: $<span id="checkout-total">0.00</span></p>
+        <button id="confirm-order">Confirm Order</button>
+    </section>
+
+    <script>
+        // รับข้อมูลจาก LocalStorage (ถ้าเคยเก็บข้อมูลตะกร้าไว้)
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // แสดงข้อมูลในหน้าเช็คบิล
+        function displayCheckoutDetails() {
+            const checkoutItemsList = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+
+            let total = 0;
+            checkoutItemsList.innerHTML = '';
+
+            // ถ้าตะกร้าไม่มีรายการ
+            if (cart.length === 0) {
+                alert("No items found in your order. Please order before confirming.");
+                window.location.href = 'index.html#Menu';  // กลับไปที่เมนูในหน้า index
+                return;
+            }
+
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+                checkoutItemsList.appendChild(listItem);
+                total += item.price * item.quantity;
+            });
+
+            checkoutTotal.textContent = total.toFixed(2);
+        }
+
+        // เมื่อโหลดหน้าเช็คบิล
+        window.onload = displayCheckoutDetails;
+
+        // เมื่อกดปุ่ม Confirm Order
+        document.getElementById('confirm-order').addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert("No items found in your order. Please order before confirming.");
+                window.location.href = 'index.html#Menu';  // กลับไปที่เมนูในหน้า index
+            } else {
+                // รีเซ็ตตะกร้าและไปที่ thank.html
+                localStorage.removeItem('cart'); // ลบข้อมูลใน localStorage
+                window.location.href = 'thank.html';  // ไปที่หน้า Thank You
+            }
+        });
+    </script>
+</body>
+</html>

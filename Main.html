@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomNaa Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #31393d;
+        }
+        header {
+            background-color: #51789f;
+            color: white;
+            text-align: center;
+            padding: 0.5px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #6e757b;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #495662;
+            border-radius: 5px;
+        }
+        .hero {
+            background-image: url('restaurant.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .menu-item {
+            background-color: white;
+            margin: 1rem;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+            width: 250px;
+        }
+        .menu-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .menu-item h3 {
+            margin: 10px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #cart {
+            margin: 2rem auto;
+            padding: 1rem;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        #cart h2 {
+            text-align: center;
+        }
+        #cart-items {
+            list-style: none;
+            padding: 0;
+        }
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Welcome to Our NomNaa Restaurant</h1>
+        <p>Delicious food delivered to your doorstep</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Enjoy the Best Dishes in Town</h2>
+        <p>Order now and experience the taste of quality!</p>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="menu-item">
+            <img src="dish1.jpg" alt="Dish 1">
+            <h3>Spaghetti Carbonara</h3>
+            <p>Classic Italian pasta with creamy sauce</p>
+            <p><strong>$12.99</strong></p>
+            <button onclick="addToCart('Spaghetti Carbonara', 12.99)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="dish2.jpg" alt="Dish 2">
+            <h3>Grilled Salmon</h3>
+            <p>Fresh salmon grilled to perfection</p>
+            <p><strong>$15.99</strong></p>
+            <button onclick="addToCart('Grilled Salmon', 15.99)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="dish3.jpg" alt="Dish 3">
+            <h3>Caesar Salad</h3>
+            <p>Crispy lettuce with homemade dressing</p>
+            <p><strong>$9.99</strong></p>
+            <button onclick="addToCart('Caesar Salad', 9.99)">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <img src="dish4.jpg" alt="Dish 4">
+            <h3>Margherita Pizza</h3>
+            <p>Tomato, mozzarella, and fresh basil</p>
+            <p><strong>$11.99</strong></p>
+            <button onclick="addToCart('Margherita Pizza', 11.99)">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItems.appendChild(li);
+            });
+            cartTotal.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
